@@ -1,0 +1,15 @@
+709a710
+>   int passwd_method = 0;
+713c714
+<         &role, &is_contest, &reg_status, &reg_flags, &login, &name)) < 0) {
+---
+>         &role, &is_contest, &reg_status, &reg_flags, &passwd_method, &login, &name)) < 0) {
+720c721
+<   val = Py_BuildValue("{s:i,s:i,s:i,s:i,s:i,s:i,s:s,s:i,s:s,s:s}",
+---
+>   val = Py_BuildValue("{s:i,s:i,s:i,s:i,s:i,s:i,s:s,s:i,s:s,s:s,s:i}",
+730c731,732
+<                       "name", name);
+---
+>                       "name", name,
+>                       "password_method", passwd_method);

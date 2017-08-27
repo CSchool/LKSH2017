@@ -1,0 +1,52 @@
+.ok {
+    background-color: #6f6;
+}
+
+.fl {
+    background-color: #f66;
+}
+
+.rj {
+    background-color: #66f;
+}
+
+.pr {
+    background-color: #ff6;
+}
+
+.un {
+    background-color: #aaa;
+}
+
+.tm {
+    background-color: #ddd;
+}
+
+.dq {
+    background-color: #000;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow: auto;
+}
+
+td {
+    border: none !important;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table.st {
+}
+
+table.st td,
+th {
+    padding: 3px;
+    white-space: nowrap;
+    border: solid !important;
+    border-width: 1px !important;
+    border-color: #000000 !important;
+}

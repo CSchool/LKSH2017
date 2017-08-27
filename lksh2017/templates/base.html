@@ -1,0 +1,37 @@
+{% load static %}
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ЛКШ "Кэш" 2017</title>
+        <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="header">
+            <h1 class="page-title">{% block title %}{% endblock %}</h1>
+            <span class="user-info">
+                {% block user_info %}
+                {% if not user.is_authenticated %}
+                <a href="/login">Вход в систему</a>
+                {% else %}
+                <b>{{ user.get_short_name }}</b>
+                <ul class="actions">
+                    <li>бонусы: <b>{{ user.bonuses }}</b></li>
+                    <li><a href="/">на главную</a></li>
+                    <li><a href="/prizes">получить призы</a></li>
+                    {% if user.is_staff %}
+                    <li><a href="/admin">админка</a></li>
+                    <li><a href="/cgi-bin/serve-control">serve-control</a></li>
+                    {% endif %}
+                    <li><a href="/logout">выйти</a></li>
+                </ul>
+                {% endif %}
+                {% endblock %}
+            </span>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

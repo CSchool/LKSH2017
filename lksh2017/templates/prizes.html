@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}ЛКШ "Кэш" 2017{% endblock %}
+{% block content %}
+<h2>Призы</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Картинка</th>
+            <th>Описание</th>
+            <th>Цена</th>
+            <th>В наличии</th>
+            <th>Купить</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for prize in prizes %}
+        <tr{% if prize.stock <= 0 or prize.cost > user.bonuses %} bgcolor="#dddddd"{% endif %}>
+            <td width="250"><b>{{ prize.name }}</b></td>
+            <td>
+                <a href="{{ prize.picture.url}}">
+                    <img width="100" src="{{ prize.picture.url }}" />
+                </a>
+            </td>
+            <td width="250">{{ prize.description|safe }}</td>
+            <td>{{ prize.cost }}</td>
+            <td>{{ prize.stock }}</td>
+            <td>
+                {% if prize.stock > 0 and prize.cost <= user.bonuses %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="prize" value="{{ prize.id }}" />
+                    <input type="hidden" name="action" value="purchase" />
+                    <button type="submit"><b>Купить</b></button>
+                </form>
+                {% endif %}
+                {% if prize.stock <= 0 %}
+                <b>Товар закончился</b>
+                {% elif prize.cost > user.bonuses %}
+                <b>Недостаточно бонусов</b>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

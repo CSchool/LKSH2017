@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Vagrant template
+.vagrant/
+Vagrantfile
+*.sqlite3
+.idea
+node_modules
+libejudge/libejudge
+media
+*.pyc
+*.mo
+*.swp
+standings/*.html

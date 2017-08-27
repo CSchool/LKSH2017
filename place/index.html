@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poor /r/place alternative</title>
+    <style>
+    * {
+        user-select: none;
+    }
+
+    #c {
+        border: 1px solid black;
+        /*cursor: none;*/
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    label {
+        min-height: 1px;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+    input[type="radio"]:checked + label {
+        border: 3px solid black;
+    }
+
+
+    label[for=c0] { background-color: #000000; }
+    label[for=c1] { background-color: #0000aa; }
+    label[for=c2] { background-color: #00aa00; }
+    label[for=c3] { background-color: #00aaaa; }
+    label[for=c4] { background-color: #aa0000; }
+    label[for=c5] { background-color: #aa00aa; }
+    label[for=c6] { background-color: #aa5500; }
+    label[for=c7] { background-color: #aaaaaa; }
+    label[for=c8] { background-color: #555555; }
+    label[for=c9] { background-color: #5555ff; }
+    label[for=c10] { background-color: #55ff55; }
+    label[for=c11] { background-color: #55ffff; }
+    label[for=c12] { background-color: #ff5555; }
+    label[for=c13] { background-color: #ff55ff; }
+    label[for=c14] { background-color: #ffff55; }
+    label[for=c15] { background-color: #ffffff; }
+
+
+    </style>
+</head>
+<body onload="redraw()">
+    <center><canvas width="512" height="512" id="c"></canvas></center>
+    <img style="display: none" src="/image.png" id="i" />
+    <br />
+    <div id="tim" style="display: none">
+    <center><h1 id="cnt"></h1></center>
+    </div>
+    <div id="pal">
+    <center>
+    <input type="radio" id="c0" name="color" value="#000000" checked /> <label for="c0">&nbsp;</label>
+    <input type="radio" id="c1" name="color" value="#0000aa" /> <label for="c1">&nbsp;</label>
+    <input type="radio" id="c2" name="color" value="#00aa00" /> <label for="c2">&nbsp;</label>
+    <input type="radio" id="c3" name="color" value="#00aaaa" /> <label for="c3">&nbsp;</label>
+    <input type="radio" id="c4" name="color" value="#aa0000" /> <label for="c4">&nbsp;</label>
+    <input type="radio" id="c5" name="color" value="#aa00aa" /> <label for="c5">&nbsp;</label>
+    <input type="radio" id="c6" name="color" value="#aa5500" /> <label for="c6">&nbsp;</label>
+    <input type="radio" id="c7" name="color" value="#aaaaaa" /> <label for="c7">&nbsp;</label>
+    <input type="radio" id="c8" name="color" value="#555555" /> <label for="c8">&nbsp;</label>
+    <input type="radio" id="c9" name="color" value="#5555ff" /> <label for="c9">&nbsp;</label>
+    <input type="radio" id="c10" name="color" value="#55ff55" /> <label for="c10">&nbsp;</label>
+    <input type="radio" id="c11" name="color" value="#55ffff" /> <label for="c11">&nbsp;</label>
+    <input type="radio" id="c12" name="color" value="#ff5555" /> <label for="c12">&nbsp;</label>
+    <input type="radio" id="c13" name="color" value="#ff55ff" /> <label for="c13">&nbsp;</label>
+    <input type="radio" id="c14" name="color" value="#ffff55" /> <label for="c14">&nbsp;</label>
+    <input type="radio" id="c15" name="color" value="#ffffff" /> <label for="c15">&nbsp;</label>
+
+    </center>
+    </div>
+    <script type="text/javascript">
+        var canvas = document.getElementById("c");
+        var ctx = canvas.getContext("2d");
+        ctx.imageSmoothingEnabled = false;
+        var img = document.getElementById("i");
+        var bad = true;
+        if (!window.localStorage.kek)
+            window.localStorage.kek = Date.now() - 1000;
+        function redraw() {
+            if (!bad)
+            ctx.drawImage(img, 0, 0, 512, 512);
+        }
+
+        function isGood() {
+            return window.localStorage.kek < Date.now();
+        }
+
+        img.onload = function() {
+            bad = false;
+            redraw();
+        };
+
+        function dodo() {
+            if (isGood()) {
+                document.getElementById("pal").style.display = "block";
+                document.getElementById("tim").style.display = "none";
+            } else {
+                document.getElementById("tim").style.display = "block";
+                document.getElementById("pal").style.display = "none";
+                document.getElementById("cnt").innerText = Math.floor((window.localStorage.kek - Date.now()) / 1000)
+            }
+        }
+
+        setInterval(function() {
+            dodo();
+        }, 1000);
+
+        setInterval(function() {
+            reload();
+        }, 15000);
+
+        dodo();
+
+        function reload() {
+            bad = true;
+            img.src = "/image.png?" + Date.now()
+        }
+
+        var pen = document.querySelector('input[name="color"]:checked').value;
+
+        var radios = document.getElementsByName('color');
+        for (var i = 0; i < radios.length; ++i)
+        {
+            radios[i].onchange = function() {
+                pen = document.querySelector('input[name="color"]:checked').value;
+            }
+        }
+
+        canvas.addEventListener('mousemove', function(event) {
+            var xx = event.pageX - canvas.offsetLeft,
+                yy = event.pageY - canvas.offsetTop;
+            var x = Math.floor(xx / 4);
+            var y = Math.floor(yy / 4);
+            if (!bad) {
+                ctx.drawImage(img, 0, 0, 512, 512);
+                if (isGood()) {
+                    ctx.fillStyle = pen;
+                    ctx.fillRect(x * 4, y * 4, 4, 4);
+                } else {
+                    ctx.strokeStyle = pen;
+                    ctx.strokeRect(x * 4, y * 4, 4, 4);
+                }
+            }
+        });
+
+        canvas.addEventListener('click', function(event) {
+            if (!isGood())
+                return;
+            var xx = event.pageX - canvas.offsetLeft,
+                yy = event.pageY - canvas.offsetTop;
+            var x = Math.floor(xx / 4);
+            var y = Math.floor(yy / 4); 
+
+            var data = new FormData();
+            data.append('x', x);
+            data.append('y', y);
+            data.append('c', document.querySelector('input[name="color"]:checked').id.slice(1));
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    reload();
+                }
+            }
+            xmlHttp.open('post', '/server');
+            xmlHttp.send(data);
+            window.localStorage.kek = Date.now() + 30000;
+            dodo();
+        });
+
+        canvas.addEventListener("mouseout", function(event) {
+            redraw();
+        });
+    </script>
+</body>
+</html>

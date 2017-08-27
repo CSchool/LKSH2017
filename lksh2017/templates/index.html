@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block title %}ЛКШ "Кэш" 2017{% endblock %}
+{% block content %}
+{% if prizes %}
+<h2>Неполученные призы</h2>
+Чтобы получить купленные призы, продиктуйте код любому преподавателю: <br />
+{% for prize in prizes %}
+<pre>{{ prize.prize.name }} - {{ prize.code }}</pre><br />
+{% endfor %}
+<hr />
+{% endif %}
+<h2>Расписание</h2>
+<table border="1" class="centered-table">
+    <thead>
+        <tr>
+            <th>Время</th>
+            <th>1 кабинет</th>
+            <th>2 кабинет</th>
+            <th>3 кабинет</th>
+            <th>4 кабинет</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>9:40 &ndash; 10:15<br />10:20 &ndash; 10:55</td>
+            <td>Робототехника</td>
+            <td>Олимпиадное программирование<br />(средний уровень)</td>
+            <td>Начальное программирование</td>
+            <td>Олимпиадное программирование<br />(высокий уровень)</td>
+        </tr>
+        <tr>
+            <td>11:00 &ndash; 11:35</td>
+            <td>Робототехника для<br />начальной школы</td>
+            <td></td>
+            <td>Программирование для<br />начальной школы</td>
+            <td>Настольные игры для<br />начальной школы</td>
+        </tr>
+        <tr>
+            <td>11:40 &ndash; 12:15<br />12:20 &ndash; 12:55</td>
+            <td>Робототехника</td>
+            <td>Олимпиадное программирование<br />(средний уровень)</td>
+            <td>Начальное программирование</td>
+            <td>Олимпиадное программирование<br />(высокий уровень)</td>
+        </tr>
+        <tr>
+            <td>16:15 &ndash; 17:15</td>
+            <td colspan="4" halign="center">Факультативы</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{% if not user.is_authenticated %}
+<hr />
+Вам нужно <a href="/login">войти</a> в систему.
+{% endif %}
+{% for group in user.groups.all %}
+    <hr />
+    <h2>{{ group.full_name }}</h2>
+    {% if user.is_staff %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="autoreward_group" />
+        <input type="hidden" name="group_id" value="{{ group.id }}" />
+        <button type="submit">Автонаградить все занятия</button><br />
+        <small>автонаграды не применяются два раза, бояться нечего</small>
+    </form><br />
+    {% endif %}
+    {% if group.standings %}
+    <a href="/standings/{{ group.id }}">Сводная таблица</a>
+    <br />
+    {% endif %}
+    {% if group.casino_contest %}
+    <h2><a href="/casino/{{ group.id }}" class="casino-link">КАЗИНО</a></h2>
+    {% endif %}
+    <br />
+    
+    <div class="lessons">
+    {% for lesson in group.lessons.all %}
+    <table border="1" cellspacing="0" cellpadding="8" class="lesson-table">
+        <thead>
+            <tr>
+                <th>{{ lesson.date }}</th>
+                <th colspan="3">{{ lesson.name }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">{{ lesson.description|safe }}</td>
+            </tr>
+            {% if lesson.contest_id %}
+            <tr>
+                <td>
+                    Контест:
+                    {% if user.is_staff %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="autoreward" />
+                        <input type="hidden" name="lesson_id" value="{{ lesson.id }}" />
+                        <button type="submit">Автонаградить</button>
+                    </form>
+                    {% endif %}
+                </td>
+                {% if lesson.contest_started %}
+                <td><a href="{{ lesson.url }}">Войти</a></td>
+                {% if lesson.statement %}<td><a href="{{ lesson.statement.url }}">Условия</a></td><td>
+                    {% else %}<td colspan="2">{% endif %}
+                <a href="{{ lesson.standings_url }}">Результаты</a></td>
+                {% else %}
+                <td colspan="3" bgcolor="#dddddd">
+                    <b>Закрыт для участия</b>
+                </td>
+                {% endif %}
+            </tr>
+            {% endif %}
+            {% for attachment in lesson.attachments.all %}
+            <tr>
+                {% if forloop.first %}  
+                <td rowspan="{{ lesson.attachments.count }}">Файлы:</td>
+                {% endif %}
+                <td colspan="3">
+                    <a href="{{ attachment.file.url }}">{{ attachment.name }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+    </div>
+{% endfor %}
+<script>
+function coloring() {
+    var casinoLinks = document.getElementsByClassName("casino-link");
+    var word = "КАЗИНО";
+    var colors = ["red", "green", "blue", "purple", "orange"];
+    for (var i = 0; i < casinoLinks.length; ++i) {
+        casinoLinks[i].innerHTML = '';
+        for (var j = 0; j < word.length; ++j) {
+            var color = colors[Math.floor(Math.random() * colors.length)];
+            casinoLinks[i].innerHTML += '<span style="color: ' + color + '">' + word[j] + '</span>';
+        }
+    }
+}
+setInterval(coloring, 1000);
+coloring();
+</script>
+{% endblock %}

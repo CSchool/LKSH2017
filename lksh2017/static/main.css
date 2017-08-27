@@ -1,0 +1,45 @@
+.header {
+    display: block;
+}
+
+.user-info {
+    float: right;
+}
+
+.page-title {
+    display: inline;
+}
+
+.user-info {
+    font-size: 12pt;
+    margin-left: 16px;
+}
+
+.error {
+    color: red;
+}
+
+.actions {
+    padding: 3px 0 0 0;
+    margin-top: 3px;
+    font-size: 14px;
+    list-style: none;
+    border-top: 1px solid black;
+}
+
+.form-table th {
+    text-align: right;
+}
+
+.centered-table td {
+    text-align: center;
+}
+
+.lessons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lessons > table {
+    margin: 8px;
+}

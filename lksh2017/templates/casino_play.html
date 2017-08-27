@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Казино{% endblock %}
+{% block content %}
+{% if not session.solved %}
+<h2 id="timer"></h2>
+{% endif %}
+{% if session.status == "chill" %}
+Игра ещё не началась
+{% elif session.status == "read" %}
+Прочитайте условие задачи
+{% elif session.status == "bet" %}
+Поставьте ставку, за сколько вы обещаете решить задачу<br />
+Ваша текущая ставка: {{ session.time_bet }} секунд. <br />
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="bet" />
+    Ставка: <input type="number" name="bet" min="0" max="7200" /><br />
+    <button type="submit">
+        <b>Поставить!</b>
+    </button>
+</form>
+{% elif session.status == "solve" %}
+    {% if session.solved %}
+        {% if session.is_ok %}
+            Вы успели решить задачу вовремя! Поздравляем!
+        {% else %}
+            Вы не успели решить задачу вовремя, но у вас ещё есть шанс победить.
+        {% endif %}
+        Вы получите свою награду и увидите результаты завтра.
+    {% else %}
+        Решайте задачу! <br />
+        После решения, обновите эту страницу. <br />
+        Количество попыток не влияет на оценку. <br />
+    {% endif %}
+{% endif %}
+<hr />
+{% if session.statement_visible %}
+<a href="{{ group.casino_statement.url }}" target="_blank"><b>Условие задачи</b></a><br />
+{% endif %}
+{% if session.login_visible %}
+<a href="/ejudge/web-client?contest_id={{ group.casino_contest }}" target="_blank"><b>Сдать задачу</b></a><br />
+{% endif %}
+{% if not session.solved %}
+<script>
+var timer = document.getElementById("timer");
+var elapsed = {{ session.elapsed }};
+var refresh = {{ session.next_refresh }};
+
+function format(x) {
+    if (x < 10)
+        return "0" + x.toString();
+    return x.toString();
+}
+
+function updateTimer() {
+    var t;
+    if (refresh >= 0)
+        t = refresh - elapsed;
+    else
+        t = elapsed + refresh;
+    var s = t % 60;
+    var m = Math.floor(t / 60);
+    timer.innerText = format(m) + ":" + format(s);
+};
+updateTimer();
+
+setInterval(function() {
+    elapsed++;
+    if (elapsed > refresh && refresh >= 0)
+        window.location.reload();
+    else
+        updateTimer();
+}, 1000);
+</script>
+{% endif %}
+{% endblock %}
