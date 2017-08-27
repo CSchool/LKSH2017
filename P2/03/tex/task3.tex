@@ -1,0 +1,169 @@
+\documentclass[12pt]{scrartcl}
+
+\usepackage[
+  a4paper, mag=1000,
+  left=2cm, right=1cm, top=2cm, bottom=2cm, headsep=0.7cm, footskip=1.27cm
+]{geometry}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{cmap}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\IfFileExists{pscyr.sty}{\usepackage{pscyr}}{}
+\usepackage[parfill]{parskip}
+\usepackage{lastpage}
+\usepackage{setspace} % single spacing between lines
+\usepackage{blindtext} % for generated text - can remove
+\usepackage{titlesec} % set header spacing
+\setlength{\parindent}{15pt} % paragraph indent
+
+\titlespacing{\section}{0pt}{\parskip}{-\parskip}
+\titlespacing{\subsection}{0pt}{\parskip}{-\parskip}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
+
+\usepackage[numbered]{bookmark}
+\clubpenalty=10000
+\widowpenalty=10000
+
+\usepackage{fancybox,fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\small{Олимпиадное программирование (средний уровень). Перебор --- день 03. \\ Летняя компьютерная школа ``КЭШ'', 8--28 августа 2017 года}}
+
+%user-defined commands
+
+\newcommand{\inputFile}{стандартный ввод}
+\newcommand{\outputFile}{стандартный вывод}
+
+\begin{document}
+
+\singlespacing
+
+\section*{Задача A. Пифагоровы тройки}
+
+\begin{tabularx}{\textwidth}{l l X}
+    Имя входного файла: & \texttt{\inputFile} \\
+    Имя выходного файла: & \texttt{\outputFile} \\
+    Ограничение по времени: & $2$ секунды \\
+    Ограничение по памяти: & $256$ мегабайт \\
+\end{tabularx}
+
+$a^2+b^2=c^2$ - совокупность чисел a, b и с называется пифагоровой тройкой. 
+Найдите и выведите все пифагоровы тройки, у которых числа a, b, и с меньше введеного числа N. 
+
+\subsection*{Формат входных данных}
+Число $N$, где $N \leq 100$
+
+\subsection*{Формат выходных данных}
+Все найденные пифагоровы тройки, при этом числа a, b и с выводятся в одну строку через пробел, а каждая новая тройка с новой строки. 
+
+
+\texttt{
+    \begin{tabularx}{0.9\textwidth}{| X | X |}
+        \hline
+        \multicolumn{1}{|c|}{Ввод} & \multicolumn{1}{c|}{Вывод} \\ \hline
+        \parbox[t]{\textheight}{
+           20 \\
+        } & \parbox[t]{\textheight}{
+            % Пример вывода. Каждая строчка заканчивается на \\ 
+            3 4 5 \\
+            5 12 13 \\
+            6 8 10 \\
+            8 15 17 \\
+            9 12 15 \\
+            12 16 20 \\
+        } \\ \hline
+    \end{tabularx}
+}
+\newpage
+
+
+
+\section*{Задача B. Задача о рюкзаке}
+
+\begin{tabularx}{\textwidth}{l l X}
+    Имя входного файла: & \texttt{\inputFile} \\
+    Имя выходного файла: & \texttt{\outputFile} \\
+    Ограничение по времени: & $2$ секунды \\
+    Ограничение по памяти: & $256$ мегабайт \\
+\end{tabularx}
+
+Пусть имеется набор предметов, каждый из которых имеет два параметра — вес и ценность. Также имеется рюкзак определённой вместимости. 
+Задача заключается в том, чтобы собрать рюкзак с максимальной ценностью предметов внутри, соблюдая при этом ограничение рюкзака на суммарный вес.
+
+\subsection*{Формат входных данных}
+В первой строке через пробел перечислены общее предметов, которые можно класть в рюкзак ($3 \leq N \leq 20$) и максимальный вес ранца ($3 \leq M \leq 600$) в килограммах.
+В следующих $N$ строчках через пробел перечислены стоимость ($N_i$) и вес ($M_i$) отдельно взятого предмета.
+
+\subsection*{Формат выходных данных}
+Вывести одно единственное число --- максимальную стоимость предмета без перегруза рюкзака.
+
+\subsection*{Примеры}
+
+\texttt{
+    \begin{tabularx}{0.9\textwidth}{| X | X |}
+        \hline
+        \multicolumn{1}{|c|}{Ввод} & \multicolumn{1}{c|}{Вывод} \\ \hline
+        \parbox[t]{\textheight}{
+            5 13 \\
+            1 3 \\
+            6 4 \\
+            4 5 \\
+            7 8 \\
+            6 9 \\
+        } & \parbox[t]{\textheight}{
+            % Пример вывода. Каждая строчка заканчивается на \\ 
+            13 \\
+        } \\ \hline
+    \end{tabularx}
+}
+
+\newpage
+
+\section*{Задача С. Пифагоровы тройки x2}
+
+\begin{tabularx}{\textwidth}{l l X}
+    Имя входного файла: & \texttt{\inputFile} \\
+    Имя выходного файла: & \texttt{\outputFile} \\
+    Ограничение по времени: & $2$ секунды \\
+    Ограничение по памяти: & $256$ мегабайт \\
+\end{tabularx}
+
+$a^2+b^2=c^2$ - совокупность чисел a, b и с называется пифагоровой тройкой. 
+Найдите и выведите все пифагоровы тройки, у которых числа a, b, и с меньше введеного числа N. 
+
+\subsection*{Формат входных данных}
+Число $N$, где $N \leq 1000$
+
+\subsection*{Формат выходных данных}
+Все найденные пифагоровы тройки, при этом числа a, b и с выводятся в одну строку через пробел, а каждая новая тройка с новой строки. 
+
+
+\texttt{
+    \begin{tabularx}{0.9\textwidth}{| X | X |}
+        \hline
+        \multicolumn{1}{|c|}{Ввод} & \multicolumn{1}{c|}{Вывод} \\ \hline
+        \parbox[t]{\textheight}{
+           20 \\
+        } & \parbox[t]{\textheight}{
+            % Пример вывода. Каждая строчка заканчивается на \\ 
+            3 4 5 \\
+            5 12 13 \\
+            6 8 10 \\
+            8 15 17 \\
+            9 12 15 \\
+            12 16 20 \\
+        } \\ \hline
+    \end{tabularx}
+}
+\newpage
+
+
+
+
+
+\end{document}

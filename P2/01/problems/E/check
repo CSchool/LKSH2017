@@ -1,0 +1,43 @@
+#!/usr/bin/python3
+
+import sys
+
+RESULTS = {
+    'OK': 0,
+    'WA': 5
+}
+
+l = 2
+
+data = []
+
+for t in range(0, 10):
+    for r in range(0, 10):
+        for i in range(0, 10):
+            for d in range(0, 10):
+                for a in range(0, 10):
+                    first_str = "{}{}{}".format(t, r, i)
+                    second_str = "{}2{}{}".format(d, r, a)
+                    first = int(first_str)
+                    second = int(second_str)
+
+                    if first * 3 == second:
+                        uniq = {t, r, i, d, l, a}
+                        if len(uniq) == 6:
+                            data.append("{}+{}+{}={}".format(first_str, first_str, first_str, second_str))
+
+with open(sys.argv[2], 'r') as output:
+    content = output.readlines()
+
+output_data = [t.strip() for t in content]
+
+for chunk in output_data:
+    if not chunk in data:
+        exit(RESULTS['WA'])
+    else:
+        data.remove(chunk)
+
+if len(data) == 0:
+    exit(RESULTS['OK'])
+else:
+    exit(RESULTS['WA'])
