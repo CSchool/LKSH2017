@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="2" short-name="primesum" url="https://polygon.codeforces.com/p/TsarN/primesum">
+    <names>
+        <name language="russian" value="Простая сумма"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="russian" path="statements/russian/problem.tex" type="application/x-tex"/>
+        <statement language="russian" path="statements/.pdf/russian/problem.pdf" type="application/pdf"/>
+        <statement charset="UTF-8" language="russian" path="statements/.html/russian/problem.html" type="text/html"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz" cpu-speed="3200" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>1000</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>28</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test cmd="gen 10 1 primesum" method="generated"/>
+                <test cmd="gen 10 2 primesum" method="generated"/>
+                <test cmd="gen 10 3 primesum" method="generated"/>
+                <test cmd="gen 10 4 primesum" method="generated"/>
+                <test cmd="gen 10 5 primesum" method="generated"/>
+                <test cmd="gen 10 6 primesum" method="generated"/>
+                <test cmd="gen 10 7 primesum" method="generated"/>
+                <test cmd="gen 10 8 primesum" method="generated"/>
+                <test cmd="gen 10000 9 primesum" method="generated"/>
+                <test cmd="gen 10000 10 primesum" method="generated"/>
+                <test cmd="gen 10000 11 primesum" method="generated"/>
+                <test cmd="gen 10000 12 primesum" method="generated"/>
+                <test cmd="gen 10000 13 primesum" method="generated"/>
+                <test cmd="gen 10000 14 primesum" method="generated"/>
+                <test cmd="gen 10000 15 primesum" method="generated"/>
+                <test cmd="gen 10000 16 primesum" method="generated"/>
+                <test cmd="gen 1000000000 17 primesum" method="generated"/>
+                <test cmd="gen 1000000000 18 primesum" method="generated"/>
+                <test cmd="gen 1000000000 19 primesum" method="generated"/>
+                <test cmd="gen 1000000000 20 primesum" method="generated"/>
+                <test cmd="gen 1000000000 21 primesum" method="generated"/>
+                <test cmd="gen 1000000000 22 primesum" method="generated"/>
+                <test cmd="gen 1000000000 23 primesum" method="generated"/>
+                <test cmd="gen 1000000000 24 primesum" method="generated"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/gen.cpp" type="cpp.g++"/>
+                <binary path="files/gen.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::yesno.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <solutions>
+            <solution tag="main">
+                <source path="solutions/solve.cpp" type="cpp.g++"/>
+                <binary path="solutions/solve.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+</problem>

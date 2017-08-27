@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="1" short-name="complete" url="https://polygon.codeforces.com/p/TsarN/complete">
+    <names>
+        <name language="russian" value="Полный граф"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="russian" path="statements/russian/problem.tex" type="application/x-tex"/>
+        <statement language="russian" path="statements/.pdf/russian/problem.pdf" type="application/pdf"/>
+        <statement charset="UTF-8" language="russian" path="statements/.html/russian/problem.html" type="text/html"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>1000</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>37</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test cmd="generator 10 95 1 complete" method="generated"/>
+                <test cmd="generator 10 95 2 complete" method="generated"/>
+                <test cmd="generator 10 95 3 complete" method="generated"/>
+                <test cmd="generator 10 40 4 complete" method="generated"/>
+                <test cmd="generator 10 40 5 complete" method="generated"/>
+                <test cmd="generator 10 40 6 complete" method="generated"/>
+                <test cmd="generator 10 1 7 complete" method="generated"/>
+                <test cmd="generator 10 1 8 complete" method="generated"/>
+                <test cmd="generator 10 1 9 complete" method="generated"/>
+                <test cmd="generator 10 70 10 complete" method="generated"/>
+                <test cmd="generator 10 70 11 complete" method="generated"/>
+                <test cmd="generator 10 70 12 complete" method="generated"/>
+                <test cmd="generator 30 95 13 complete" method="generated"/>
+                <test cmd="generator 30 95 14 complete" method="generated"/>
+                <test cmd="generator 30 95 15 complete" method="generated"/>
+                <test cmd="generator 30 40 16 complete" method="generated"/>
+                <test cmd="generator 30 40 17 complete" method="generated"/>
+                <test cmd="generator 30 40 18 complete" method="generated"/>
+                <test cmd="generator 30 1 19 complete" method="generated"/>
+                <test cmd="generator 30 1 20 complete" method="generated"/>
+                <test cmd="generator 30 1 21 complete" method="generated"/>
+                <test cmd="generator 30 70 22 complete" method="generated"/>
+                <test cmd="generator 30 70 23 complete" method="generated"/>
+                <test cmd="generator 30 70 24 complete" method="generated"/>
+                <test cmd="generator 100 95 25 complete" method="generated"/>
+                <test cmd="generator 100 95 26 complete" method="generated"/>
+                <test cmd="generator 100 95 27 complete" method="generated"/>
+                <test cmd="generator 100 40 28 complete" method="generated"/>
+                <test cmd="generator 100 40 29 complete" method="generated"/>
+                <test cmd="generator 100 40 30 complete" method="generated"/>
+                <test cmd="generator 100 1 31 complete" method="generated"/>
+                <test cmd="generator 100 1 32 complete" method="generated"/>
+                <test cmd="generator 100 1 33 complete" method="generated"/>
+                <test cmd="generator 100 70 34 complete" method="generated"/>
+                <test cmd="generator 100 70 35 complete" method="generated"/>
+                <test cmd="generator 100 70 36 complete" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/generator.cpp" type="cpp.g++11"/>
+                <binary path="files/generator.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::lcmp.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>0</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests/>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="main">
+                <source path="solutions/solver.cpp" type="cpp.g++11"/>
+                <binary path="solutions/solver.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="easy"/>
+        <tag value="graphs"/>
+    </tags>
+</problem>

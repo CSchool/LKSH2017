@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<contest url="https://polygon.codeforces.com/c/6437">
+    <names>
+        <name language="russian" value="ЛКШ 2017 - П3 - Тренировка 03"/>
+    </names>
+    <statements>
+        <statement language="russian" type="application/pdf" url="https://polygon.codeforces.com/c/6437/russian/statements.pdf"/>
+    </statements>
+    <problems>
+        <problem index="a" url="https://polygon.codeforces.com/p/TsarN/bipartite"/>
+        <problem index="b" url="https://polygon.codeforces.com/p/TsarN/tail"/>
+    </problems>
+</contest>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="1" short-name="forest" url="https://polygon.codeforces.com/p/TsarN/forest">
+    <names>
+        <name language="russian" value="Лесопосадки"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="russian" path="statements/russian/problem.tex" type="application/x-tex"/>
+        <statement language="russian" path="statements/.pdf/russian/problem.pdf" type="application/pdf"/>
+        <statement charset="UTF-8" language="russian" path="statements/.html/russian/problem.html" type="text/html"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>1000</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>42</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test cmd="generator 20 10 0 1 forest" method="generated"/>
+                <test cmd="generator 20 10 5 2 forest" method="generated"/>
+                <test cmd="generator 20 10 -5 3 forest" method="generated"/>
+                <test cmd="generator 20 10 100 4 forest" method="generated"/>
+                <test cmd="generator 20 10 -100 5 forest" method="generated"/>
+                <test cmd="generator 20 30 0 6 forest" method="generated"/>
+                <test cmd="generator 20 30 5 7 forest" method="generated"/>
+                <test cmd="generator 20 30 -5 8 forest" method="generated"/>
+                <test cmd="generator 20 30 100 9 forest" method="generated"/>
+                <test cmd="generator 20 30 -100 10 forest" method="generated"/>
+                <test cmd="generator 20 0 0 11 forest" method="generated"/>
+                <test cmd="generator 20 0 5 12 forest" method="generated"/>
+                <test cmd="generator 20 0 -5 13 forest" method="generated"/>
+                <test cmd="generator 20 0 100 14 forest" method="generated"/>
+                <test cmd="generator 20 0 -100 15 forest" method="generated"/>
+                <test cmd="generator 20 85 0 16 forest" method="generated"/>
+                <test cmd="generator 20 85 5 17 forest" method="generated"/>
+                <test cmd="generator 20 85 -5 18 forest" method="generated"/>
+                <test cmd="generator 20 85 100 19 forest" method="generated"/>
+                <test cmd="generator 20 85 -100 20 forest" method="generated"/>
+                <test cmd="generator 100 10 0 21 forest" method="generated"/>
+                <test cmd="generator 100 10 5 22 forest" method="generated"/>
+                <test cmd="generator 100 10 -5 23 forest" method="generated"/>
+                <test cmd="generator 100 10 100 24 forest" method="generated"/>
+                <test cmd="generator 100 10 -100 25 forest" method="generated"/>
+                <test cmd="generator 100 30 0 26 forest" method="generated"/>
+                <test cmd="generator 100 30 5 27 forest" method="generated"/>
+                <test cmd="generator 100 30 -5 28 forest" method="generated"/>
+                <test cmd="generator 100 30 100 29 forest" method="generated"/>
+                <test cmd="generator 100 30 -100 30 forest" method="generated"/>
+                <test cmd="generator 100 0 0 31 forest" method="generated"/>
+                <test cmd="generator 100 0 5 32 forest" method="generated"/>
+                <test cmd="generator 100 0 -5 33 forest" method="generated"/>
+                <test cmd="generator 100 0 100 34 forest" method="generated"/>
+                <test cmd="generator 100 0 -100 35 forest" method="generated"/>
+                <test cmd="generator 100 85 0 36 forest" method="generated"/>
+                <test cmd="generator 100 85 5 37 forest" method="generated"/>
+                <test cmd="generator 100 85 -5 38 forest" method="generated"/>
+                <test cmd="generator 100 85 100 39 forest" method="generated"/>
+                <test cmd="generator 100 85 -100 40 forest" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/generator.cpp" type="cpp.g++11"/>
+                <binary path="files/generator.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++11"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::lcmp.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++11"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>0</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests/>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="main">
+                <source path="solutions/solver.cpp" type="cpp.g++11"/>
+                <binary path="solutions/solver.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="easy"/>
+        <tag value="graphs"/>
+    </tags>
+</problem>

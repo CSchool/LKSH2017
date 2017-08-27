@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="3" short-name="knight" url="https://polygon.codeforces.com/p/TsarN/knight">
+    <names>
+        <name language="russian" value="Ход конём"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="russian" path="statements/russian/problem.tex" type="application/x-tex"/>
+        <statement language="russian" path="statements/.pdf/russian/problem.pdf" type="application/pdf"/>
+        <statement charset="UTF-8" language="russian" path="statements/.html/russian/problem.html" type="text/html"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>1000</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>26</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test cmd="generator 1" method="generated"/>
+                <test cmd="generator 2" method="generated"/>
+                <test cmd="generator 3" method="generated"/>
+                <test cmd="generator 4" method="generated"/>
+                <test cmd="generator 5" method="generated"/>
+                <test cmd="generator 6" method="generated"/>
+                <test cmd="generator 7" method="generated"/>
+                <test cmd="generator 8" method="generated"/>
+                <test cmd="generator 9" method="generated"/>
+                <test cmd="generator 10" method="generated"/>
+                <test cmd="generator 11" method="generated"/>
+                <test cmd="generator 12" method="generated"/>
+                <test cmd="generator 13" method="generated"/>
+                <test cmd="generator 14" method="generated"/>
+                <test cmd="generator 15" method="generated"/>
+                <test cmd="generator 16" method="generated"/>
+                <test cmd="generator 17" method="generated"/>
+                <test cmd="generator 18" method="generated"/>
+                <test cmd="generator 19" method="generated"/>
+                <test cmd="generator 20" method="generated"/>
+                <test cmd="generator 21" method="generated"/>
+                <test cmd="generator 22" method="generated"/>
+                <test cmd="generator 23" method="generated"/>
+                <test cmd="generator 24" method="generated"/>
+                <test cmd="generator 25" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/checker.cpp" type="cpp.g++11"/>
+                <binary path="files/checker.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/generator.cpp" type="cpp.g++"/>
+                <binary path="files/generator.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/checker.cpp" type="cpp.g++11"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp" type="cpp.g++11"/>
+            <testset>
+                <test-count>3</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests>
+                    <test verdict="ok"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                </tests>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>0</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests/>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="main">
+                <source path="solutions/solver.cpp" type="cpp.g++11"/>
+                <binary path="solutions/solver.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="chess"/>
+        <tag value="easy"/>
+        <tag value="graphs"/>
+    </tags>
+</problem>

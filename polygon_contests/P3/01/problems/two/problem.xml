@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="5" short-name="two" url="https://polygon.codeforces.com/p/TsarN/two">
+    <names>
+        <name language="russian" value="Переселение сыщика"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="russian" path="statements/russian/problem.tex" type="application/x-tex"/>
+        <statement language="russian" path="statements/.pdf/russian/problem.pdf" type="application/pdf"/>
+        <statement charset="UTF-8" language="russian" path="statements/.html/russian/problem.html" type="text/html"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>1000</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>50</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test cmd="gen 5 50 1 two" method="generated"/>
+                <test cmd="gen 5 50 2 two" method="generated"/>
+                <test cmd="gen 5 50 3 two" method="generated"/>
+                <test cmd="gen 5 20 4 two" method="generated"/>
+                <test cmd="gen 5 20 5 two" method="generated"/>
+                <test cmd="gen 5 20 6 two" method="generated"/>
+                <test cmd="gen 5 0 7 two" method="generated"/>
+                <test cmd="gen 5 0 8 two" method="generated"/>
+                <test cmd="gen 5 0 9 two" method="generated"/>
+                <test cmd="gen 5 100 10 two" method="generated"/>
+                <test cmd="gen 5 100 11 two" method="generated"/>
+                <test cmd="gen 5 100 12 two" method="generated"/>
+                <test cmd="gen 15 50 13 two" method="generated"/>
+                <test cmd="gen 15 50 14 two" method="generated"/>
+                <test cmd="gen 15 50 15 two" method="generated"/>
+                <test cmd="gen 15 20 16 two" method="generated"/>
+                <test cmd="gen 15 20 17 two" method="generated"/>
+                <test cmd="gen 15 20 18 two" method="generated"/>
+                <test cmd="gen 15 0 19 two" method="generated"/>
+                <test cmd="gen 15 0 20 two" method="generated"/>
+                <test cmd="gen 15 0 21 two" method="generated"/>
+                <test cmd="gen 15 100 22 two" method="generated"/>
+                <test cmd="gen 15 100 23 two" method="generated"/>
+                <test cmd="gen 15 100 24 two" method="generated"/>
+                <test cmd="gen 30 50 25 two" method="generated"/>
+                <test cmd="gen 30 50 26 two" method="generated"/>
+                <test cmd="gen 30 50 27 two" method="generated"/>
+                <test cmd="gen 30 20 28 two" method="generated"/>
+                <test cmd="gen 30 20 29 two" method="generated"/>
+                <test cmd="gen 30 20 30 two" method="generated"/>
+                <test cmd="gen 30 0 31 two" method="generated"/>
+                <test cmd="gen 30 0 32 two" method="generated"/>
+                <test cmd="gen 30 0 33 two" method="generated"/>
+                <test cmd="gen 30 100 34 two" method="generated"/>
+                <test cmd="gen 30 100 35 two" method="generated"/>
+                <test cmd="gen 30 100 36 two" method="generated"/>
+                <test cmd="gen 100 50 37 two" method="generated"/>
+                <test cmd="gen 100 50 38 two" method="generated"/>
+                <test cmd="gen 100 50 39 two" method="generated"/>
+                <test cmd="gen 100 20 40 two" method="generated"/>
+                <test cmd="gen 100 20 41 two" method="generated"/>
+                <test cmd="gen 100 20 42 two" method="generated"/>
+                <test cmd="gen 100 0 43 two" method="generated"/>
+                <test cmd="gen 100 0 44 two" method="generated"/>
+                <test cmd="gen 100 0 45 two" method="generated"/>
+                <test cmd="gen 100 100 46 two" method="generated"/>
+                <test cmd="gen 100 100 47 two" method="generated"/>
+                <test cmd="gen 100 100 48 two" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/gen.cpp" type="cpp.g++11"/>
+                <binary path="files/gen.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++11"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::lcmp.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++11"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>7</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="main">
+                <source path="solutions/solver.cpp" type="cpp.g++11"/>
+                <binary path="solutions/solver.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="easy"/>
+        <tag value="graphs"/>
+    </tags>
+</problem>

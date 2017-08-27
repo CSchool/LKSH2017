@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="2" short-name="rain" url="https://polygon.codeforces.com/p/TsarN/rain">
+    <names>
+        <name language="russian" value="Цветной дождь"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="russian" path="statements/russian/problem.tex" type="application/x-tex"/>
+        <statement language="russian" path="statements/.pdf/russian/problem.pdf" type="application/pdf"/>
+        <statement charset="UTF-8" language="russian" path="statements/.html/russian/problem.html" type="text/html"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>1000</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>50</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test cmd="generator 5 50 1 rain" method="generated"/>
+                <test cmd="generator 5 50 2 rain" method="generated"/>
+                <test cmd="generator 5 50 3 rain" method="generated"/>
+                <test cmd="generator 5 80 4 rain" method="generated"/>
+                <test cmd="generator 5 80 5 rain" method="generated"/>
+                <test cmd="generator 5 80 6 rain" method="generated"/>
+                <test cmd="generator 5 20 7 rain" method="generated"/>
+                <test cmd="generator 5 20 8 rain" method="generated"/>
+                <test cmd="generator 5 20 9 rain" method="generated"/>
+                <test cmd="generator 5 100 10 rain" method="generated"/>
+                <test cmd="generator 5 100 11 rain" method="generated"/>
+                <test cmd="generator 5 100 12 rain" method="generated"/>
+                <test cmd="generator 15 50 13 rain" method="generated"/>
+                <test cmd="generator 15 50 14 rain" method="generated"/>
+                <test cmd="generator 15 50 15 rain" method="generated"/>
+                <test cmd="generator 15 80 16 rain" method="generated"/>
+                <test cmd="generator 15 80 17 rain" method="generated"/>
+                <test cmd="generator 15 80 18 rain" method="generated"/>
+                <test cmd="generator 15 20 19 rain" method="generated"/>
+                <test cmd="generator 15 20 20 rain" method="generated"/>
+                <test cmd="generator 15 20 21 rain" method="generated"/>
+                <test cmd="generator 15 100 22 rain" method="generated"/>
+                <test cmd="generator 15 100 23 rain" method="generated"/>
+                <test cmd="generator 15 100 24 rain" method="generated"/>
+                <test cmd="generator 30 50 25 rain" method="generated"/>
+                <test cmd="generator 30 50 26 rain" method="generated"/>
+                <test cmd="generator 30 50 27 rain" method="generated"/>
+                <test cmd="generator 30 80 28 rain" method="generated"/>
+                <test cmd="generator 30 80 29 rain" method="generated"/>
+                <test cmd="generator 30 80 30 rain" method="generated"/>
+                <test cmd="generator 30 20 31 rain" method="generated"/>
+                <test cmd="generator 30 20 32 rain" method="generated"/>
+                <test cmd="generator 30 20 33 rain" method="generated"/>
+                <test cmd="generator 30 100 34 rain" method="generated"/>
+                <test cmd="generator 30 100 35 rain" method="generated"/>
+                <test cmd="generator 30 100 36 rain" method="generated"/>
+                <test cmd="generator 100 50 37 rain" method="generated"/>
+                <test cmd="generator 100 50 38 rain" method="generated"/>
+                <test cmd="generator 100 50 39 rain" method="generated"/>
+                <test cmd="generator 100 80 40 rain" method="generated"/>
+                <test cmd="generator 100 80 41 rain" method="generated"/>
+                <test cmd="generator 100 80 42 rain" method="generated"/>
+                <test cmd="generator 100 20 43 rain" method="generated"/>
+                <test cmd="generator 100 20 44 rain" method="generated"/>
+                <test cmd="generator 100 20 45 rain" method="generated"/>
+                <test cmd="generator 100 100 46 rain" method="generated"/>
+                <test cmd="generator 100 100 47 rain" method="generated"/>
+                <test cmd="generator 100 100 48 rain" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/generator.cpp" type="cpp.g++11"/>
+                <binary path="files/generator.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::hcmp.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>0</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests/>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="main">
+                <source path="solutions/solver.cpp" type="cpp.g++11"/>
+                <binary path="solutions/solver.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="easy"/>
+        <tag value="graphs"/>
+    </tags>
+</problem>
