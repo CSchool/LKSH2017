@@ -1,0 +1,59 @@
+#!/usr/bin/python3
+
+import os
+import math
+import sys
+
+test_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tests')
+i = 0
+
+
+def solve(data):
+    min_value = math.inf
+    answer = ()
+
+    for i in range(0, len(data)):
+        for j in range(i + 1, len(data)):
+            for k in range(j + 1, len(data)):
+                d1 = math.hypot(data[i][0] - data[j][0], data[i][1] - data[j][1])
+                d2 = math.hypot(data[j][0] - data[k][0], data[j][1] - data[k][1])
+                d3 = math.hypot(data[i][0] - data[k][0], data[i][1] - data[k][1])
+
+                if d1 + d2 + d3 < min_value:
+                    answer = (i + 1, j + 1, k + 1)
+                    min_value = d1 + d2 + d3
+
+    return answer
+
+points = {
+    'data': [],
+    'count': 0
+}
+
+with open(sys.argv[1], 'r') as input_file:
+    try:
+        points['count'] = int(input_file.readline())
+        raw_data = input_file.readlines()
+
+        for line in raw_data:
+            points['data'].append(tuple(map(float, line.split())))
+    except Exception as e:
+        print(str(e), file=sys.stderr)
+        exit(5)
+
+answer = solve(points['data'])
+output_answer = ()
+
+with open(sys.argv[2], 'r') as output_file:
+    try:
+        output_answer = tuple(map(int, output_file.readline().split()))
+    except Exception as e:
+        print(str(e), file=sys.stderr)
+        exit(5)
+
+if sorted(answer) == sorted(output_answer):
+    exit(0)
+else:
+    print("{} is not equal {}\n".format(str(answer), str(output_answer)), file=sys.stderr)
+    exit(5)
+
